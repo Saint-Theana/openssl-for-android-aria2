@@ -1,0 +1,23 @@
+ANDROID_HOME=/data/data/io.neoterm/files/home/aria2/
+
+
+
+DOWNLOADER="wget -c"
+TOOLCHAIN=$ANDROID_HOME/toolchain
+PATH=$TOOLCHAIN/bin:$PATH
+HOST=aarch64-linux-android
+PREFIX=$ANDROID_HOME/usr/local
+LOCAL_DIR=$ANDROID_HOME/usr/local
+TOOL_BIN_DIR=$ANDROID_HOME/toolchain/bin
+PATH=${TOOL_BIN_DIR}:$PATH
+CFLAGS="-march=armv8-a -mtune=cortex-a73"
+aarch="aarch64"
+DEST=$ANDROID_HOME/usr/local
+CC=$HOST-gcc
+CXX=$HOST-g++
+LDFLAGS="-L$DEST/lib"
+CPPFLAGS="-I$DEST/include"
+CXXFLAGS=$CFLAGS
+export ANDROID_NDK_ROOT=/data/data/io.neoterm/files/home/aria2
+
+PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig/ LD_LIBRARY_PATH=$PREFIX/lib/:$LD_LIBRARY_PATH CC=$TOOL_BIN_DIR/clang STRIP=$TOOL_BIN_DIR/strip RANLIB=$TOOL_BIN_DIR/ranlib CXX=$TOOL_BIN_DIR/clang++ AR=$TOOL_BIN_DIR/ar LD=$TOOL_BIN_DIR/ld ./Configure linux-aarch64 $CFLAGS --prefix=$PREFIX --with-zlib-lib=$LOCAL_DIR/lib --with-zlib-include=$LOCAL_DIR/include 
